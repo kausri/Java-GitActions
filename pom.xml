@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>Java-GitActions</groupId>
   <artifactId>Java-GitActions</artifactId>
-  <packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>Java-GitActions</name>
-	<url>http://maven.apache.org</url>
+    <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -28,12 +28,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-		<executions>
-		  <execution>
-		    <id>attach-sources</id>
-		    <goals>
-		      <goal>jar</goal>
-		    </goals>
+	<executions>
+	  <execution>
+	    <id>attach-sources</id>
+	    <goals>
+              <goal>jar</goal>
+	    </goals>
           </execution>
         </executions>
       </plugin>
