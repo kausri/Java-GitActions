@@ -17,4 +17,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s) --build-arg JAR_FILE=/home/runner/work/Java-GitActions/Java-GitActions/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
