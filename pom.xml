@@ -7,12 +7,12 @@
   <name>Java-GitActions</name>
 	<url>http://maven.apache.org</url>
   <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -25,26 +25,28 @@
           <release>10</release>
         </configuration>
       </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+        <artifactId>maven-source-plugin</artifactId>
+		<executions>
+		  <execution>
+		    <id>attach-sources</id>
+		    <goals>
+		      <goal>jar</goal>
+		    </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
     <extensions>
-			<!-- begin - needed for deploying to repository using webdav -->
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-			<!-- end - needed for deploying to repository using webdav -->
-		</extensions>
+      <!-- begin - needed for deploying to repository using webdav -->
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav</artifactId>
+        <version>1.0-beta-2</version>
+      </extension>
+      <!-- end - needed for deploying to repository using webdav -->
+    </extensions>
   </build>
   <distributionManagement>
     <repository>
