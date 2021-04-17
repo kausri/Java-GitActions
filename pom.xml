@@ -3,6 +3,13 @@
   <groupId>Java-GitActions</groupId>
   <artifactId>Java-GitActions</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+    </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>Tests</testSourceDirectory>
@@ -16,4 +23,5 @@
       </plugin>
     </plugins>
   </build>
+  
 </project>
