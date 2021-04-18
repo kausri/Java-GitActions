@@ -16,10 +16,7 @@ jobs:
     - uses: actions/checkout@v2
        
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:1.0 --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+      run: mvn -B package --file pom.xml        
  
     - uses: docker/build-push-action@v1
       with:
@@ -28,5 +25,7 @@ jobs:
         registry: docker.pkg.github.com
         repository: docker.pkg.github.com/my-repo/calc
         tag_with_ref: true
+    - name: Build the Docker image
+    - run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:1.0 --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
     - name: Push Docker image GitHUb registry
       run: docker push docker.pkg.github.com/kausri/image-repo/calc:1.0
