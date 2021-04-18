@@ -14,9 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/labeler@v2
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     
@@ -24,4 +22,7 @@ jobs:
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:1.0 --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
    
     - name: Push Docker image GitHUb registry
+    - uses: actions/labeler@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       run: docker push docker.pkg.github.com/kausri/image-repo/calc:1.0
