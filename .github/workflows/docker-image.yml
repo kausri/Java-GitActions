@@ -21,7 +21,7 @@ jobs:
      
     - name: Build Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:1.0 --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-    - name: Login to Registry
+#     - name: Login to Registry
     - uses: docker/login-action@v1
       with:
         registry: docker.pkg.github.com
