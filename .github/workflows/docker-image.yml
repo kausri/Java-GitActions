@@ -14,11 +14,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: docker/build-push-action@v1
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s) --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-
+      
+    - uses: docker/build-push-action@v1
     - name: Push Docker image GitHUb registry
       run: docker push docker.pkg.github.com/kausri/Docker-Registry-Repo/my-image-name:$(date +%s):v1
