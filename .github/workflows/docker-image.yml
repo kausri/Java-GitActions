@@ -21,5 +21,8 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s) --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
       
 #     - uses: docker/build-push-action@v1
+    - name: Tag Docker image 
+      run: docker tag my-image-name:$(date +%s) docker.pkg.github.com/kausri/my-image-repo/calc:1
+      
     - name: Push Docker image GitHUb registry
-      run: docker push 
+      run: docker push docker.pkg.github.com/kausri/my-image-repo/calc:1
