@@ -35,7 +35,7 @@ jobs:
 #         tag_with_sha: true  
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}}
-        registry: ghcr.io
+        registry: docker.pkg.github.com
         repository: kausri/github-actions-for-packages/calc
         tag_with_ref: true
      
