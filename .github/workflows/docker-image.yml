@@ -26,10 +26,11 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: docker.pkg.github.com
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-#           username: ${{ github.actor }}
-#           password: ${{ github.token }}
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          
       - 
         name: Build and tag Docker image
         run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:1.0 --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
