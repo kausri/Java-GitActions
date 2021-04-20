@@ -27,7 +27,7 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: webpack artifacts
-        path: public/
+        path: public
             
 #     - 
 #       name: Login to github docker registry
