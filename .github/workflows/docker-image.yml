@@ -21,9 +21,13 @@ jobs:
       name: Build with Maven
       run: mvn -B package --file pom.xml        
 
-#     -
-#       name: Build Docker image
-#       run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
+    -
+      name: Build Docker image
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
+    - uses: actions/upload-artifact@master
+      with:
+        name: webpack artifacts
+        path: public/
             
 #     - 
 #       name: Login to github docker registry
@@ -37,15 +41,16 @@ jobs:
 #         password: ${{secrets.GITHUB_TOKEN}}}
 #         registry: docker.pkg.github.com
 #         repository: kausri/github-actions-for-packages/calc
-#         tag_with_ref: true
-     
-    - 
-      name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
+#         tag_with_ref: true    
 
     - 
-      name: Build and push
+      name: Download built artifact
+      uses: actions/download-artifact@main
+      with:
+        name: webpack artifacts
+        path: public
+    -
+      name: Build and push      
       id: docker_build
       uses: docker/build-push-action@v1
       with:
@@ -54,9 +59,9 @@ jobs:
 #         registry: docker.pkg.github.com
         registry: ghcr.io
         repository: kausri/image-repo/calc
-        context: ./
-        file: ./Dockerfile 
-        build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+#         context: ./
+#         file: ./Dockerfile 
+#         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         tag_with_sha: true
 #         tags: ghcr.io/kausri/image-repo/calc:latest
 #         tags: ghcr.io/kausri/image-repo/calc:latest
