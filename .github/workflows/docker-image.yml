@@ -57,7 +57,7 @@ jobs:
         context: ./
         file: ./Dockerfile 
         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-        push: true
+        tag_with_sha: true
 #         tags: ghcr.io/kausri/image-repo/calc:latest
 #         tags: ghcr.io/kausri/image-repo/calc:latest
 
