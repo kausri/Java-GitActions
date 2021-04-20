@@ -29,10 +29,15 @@ jobs:
       name: Login to github docker registry
       uses: docker/login-action@v1
       with:
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-        registry: docker.pkg.github.com        
-        tag_with_sha: true  
+#         username: ${{github.actor}}
+#         password: ${{secrets.GITHUB_TOKEN}}
+#         registry: docker.pkg.github.com        
+#         tag_with_sha: true  
+        username: ${{ github.actor }}
+        password: ${{ secrets.CR_PAT }}
+        registry: ghcr.io
+        repository: kausri/github-actions-for-packages/calc
+        tag_with_ref: true
      
     - 
       name: Set up Docker Buildx
@@ -49,7 +54,7 @@ jobs:
         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         push: true
         tags: docker.pkg.github.com/kausri/kausri/github-actions-for-packages/calc:latest
-        
+      
 #     -
 #       name: publish docker image
 #       run: docker push docker.pkg.github.com/kausri/kausri/github-actions-for-packages/calc:latest
