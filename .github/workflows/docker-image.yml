@@ -13,18 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - 
+      name: Checkout source
+      uses: actions/checkout@v2
        
-    - name: Build with Maven
+    - 
+      name: Build with Maven
       run: mvn -B package --file pom.xml        
 
-     
-    - name: Build Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:1.0 --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-#     - name: Login to Registry
-    - uses: docker/login-action@v1
+    -
+      name: Build Docker image
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     - name: Login to Registry
+      
+    - 
+      name: Login to github docker registry
+      uses: docker/login-action@v1
       with:
+        name: kausri/image-repo/calc
         registry: docker.pkg.github.com
         username: ${{ github.actor }}
         password: ${{ github.token }}
-#     - run: docker push docker.pkg.github.com/kausri/image-repo/calc:1.0
+        
+    -
+      name: publish docker image
+      run: docker push docker.pkg.github.com/kausri/image-repo/calc:latest
