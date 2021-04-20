@@ -58,7 +58,7 @@ jobs:
         file: ./Dockerfile 
         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         push: true
-        tags: ghcr.io/kausri/kausri/github-actions-for-packages/calc:latest
+        tags: ghcr.io/kausri/image-repo/calc:latest
       
 #     -
 #       name: publish docker image
