@@ -50,6 +50,7 @@ jobs:
         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         push: true
         tags: docker.pkg.github.com/kausri/image-repo/calc:latest
+        
     -
       name: publish docker image
       run: docker push docker.pkg.github.com/kausri/image-repo/calc:latest
