@@ -23,8 +23,8 @@ jobs:
 
     -
       name: Build Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     - name: Login to Registry
-      
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
+            
     - 
       name: Login to github docker registry
       uses: docker/login-action@v1
