@@ -48,8 +48,8 @@ jobs:
         file: ./Dockerfile 
         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         push: true
-        tags: docker.pkg.github.com/kausri/image-repo/calc:latest
+        tags: docker.pkg.github.com/kausri/kausri/github-actions-for-packages/calc:latest
         
     -
       name: publish docker image
-      run: docker push docker.pkg.github.com/kausri/image-repo/calc:latest
+      run: docker push docker.pkg.github.com/kausri/kausri/github-actions-for-packages/calc:latest
