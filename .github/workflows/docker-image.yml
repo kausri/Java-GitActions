@@ -47,7 +47,7 @@ jobs:
       with:
         context: ./
         file: ./Dockerfile 
-        build-arg: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+        build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         push: true
         tags: docker.pkg.github.com/kausri/image-repo/calc:latest
     -
