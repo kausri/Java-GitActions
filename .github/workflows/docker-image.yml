@@ -63,12 +63,12 @@ jobs:
       name: Build and push      
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: ghcr.io/kausri/image-repo/calc:latest
+        image: ghcr.io/kausri/image-repo/calc
         registry: ghcr.io
         username: ${{ secrets.github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}         
         dockerfile: ./Dockerfile 
-        tag: latest
+#         tag: latest
         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         
 
