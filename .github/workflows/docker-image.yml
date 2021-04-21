@@ -61,4 +61,5 @@ jobs:
         file: Dockerfile 
         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         tags: latest
+        tag_with_sha: true
 
