@@ -64,12 +64,9 @@ jobs:
         tags: latest
         tag_with_sha: true
 
-  Build-and-Push-Docker-Image:
-    runs-on: ubuntu-latest    
-    name: Docker Build, Tag, Push
-
-    steps:
-    - name: Checkout
+  
+    -   
+      name: Checkout
       uses: actions/checkout@v1
     - 
       name: Download built artifact
@@ -82,7 +79,7 @@ jobs:
       with:
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
-#         registry: docker.pkg.github.com
+  #         registry: docker.pkg.github.com
         registry: ghcr.io
         repository: kausri/image-repo/calc
         tag_with_sha: true
