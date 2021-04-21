@@ -67,20 +67,10 @@ jobs:
         registry: ghcr.io
         username: ${{ secrets.github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }} 
-#       id: docker_build
-#       uses: docker/build-push-action@v1
-#       with:
-#         username: ${{github.actor}}
-#         password: ${{secrets.GITHUB_TOKEN}}
-# #         registry: docker.pkg.github.com
-#         registry: ghcr.io
-# #         repository: kausri/image-repo/calc
-# #         context: ./
-# #         file: ./Dockerfile 
-# #         build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-#         tag_with_sha: true
-# #         tags: ghcr.io/kausri/image-repo/calc:latest
-    
+        context: ./
+        file: ./Dockerfile 
+        build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+
 
       
 #     -
