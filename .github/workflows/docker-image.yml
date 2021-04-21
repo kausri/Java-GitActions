@@ -24,17 +24,27 @@ jobs:
     -
       name: Build Docker image
       run: docker build . --file Dockerfile --tag ghcr.io/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
-    -
-      name: Upload/ archive docker image 
-      uses: ishworkh/docker-image-artifact-upload@v1
-      with:
-        image: ghcr.io/kausri/image-repo/calc:latest
+    
+    - name: Log into registry
+    - uses: actions/docker/login@master
+      with: 
+        username: ${{ secrets.GHCR_USERNAME }}
+        password: ${{ secrets.GHCR_TOKEN }}       
+    - name: Push image
+      run: |
+          IMAGE_ID=ghcr.io/kausri/image-repo/calc
+          docker push ghcr.io/kausri/image-repo/calc:latest
+#     -
+#       name: Upload/ archive docker image 
+#       uses: ishworkh/docker-image-artifact-upload@v1
+#       with:
+#         image: ghcr.io/kausri/image-repo/calc:latest
 
-    - 
-      name: Download built artifact
-      uses: ishworkh/docker-image-artifact-download@v1
-      with:
-        image: ghcr.io/kausri/image-repo/calc:latest
+#     - 
+#       name: Download built artifact
+#       uses: ishworkh/docker-image-artifact-download@v1
+#       with:
+#         image: ghcr.io/kausri/image-repo/calc:latest
 #     -
 #       name: Build and push      
 #       uses: mr-smithers-excellent/docker-build-push@v5
@@ -47,39 +57,39 @@ jobs:
 #         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         
 
-    - name: Build container image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-        registry: ghcr.io
-#         repository: kausri/image-repo/calc
-        repository: kausri/github-actions-for-packages/calc
-#         image: ghcr.io/kausri/image-repo/calc
-#         username: ${{ secrets.GHCR_USERNAME }}
-#         password: ${{ secrets.GHCR_TOKEN }}         
-        file: Dockerfile 
-        buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-        tags: latest
-        tag_with_sha: true
+#     - name: Build container image
+#       uses: docker/build-push-action@v2
+#       with:
+#         context: ./
+#         username: ${{github.actor}}
+#         password: ${{secrets.GITHUB_TOKEN}}
+#         registry: ghcr.io
+# #         repository: kausri/image-repo/calc
+#         repository: kausri/github-actions-for-packages/calc
+# #         image: ghcr.io/kausri/image-repo/calc
+# #         username: ${{ secrets.GHCR_USERNAME }}
+# #         password: ${{ secrets.GHCR_TOKEN }}         
+#         file: Dockerfile 
+#         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+#         tags: latest
+#         tag_with_sha: true
 
   
-    -   
-      name: Checkout
-      uses: actions/checkout@v1
-    - 
-      name: Download built artifact
-      uses: ishworkh/docker-image-artifact-download@v1
-      with:
-        image: ghcr.io/kausri/image-repo/calc:latest
+#     -   
+#       name: Checkout
+#       uses: actions/checkout@v1
+#     - 
+#       name: Download built artifact
+#       uses: ishworkh/docker-image-artifact-download@v1
+#       with:
+#         image: ghcr.io/kausri/image-repo/calc:latest
 
-    - name: Push downloaded docker image
-      with:
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-  #         registry: docker.pkg.github.com
-        registry: ghcr.io
-        repository: kausri/image-repo/calc
-        tag_with_sha: true
-    - run: docker push ghcr.io/kausri/image-repo/calc:latest
+#     - name: Push downloaded docker image
+#       with:
+#         username: ${{github.actor}}
+#         password: ${{secrets.GITHUB_TOKEN}}
+#   #         registry: docker.pkg.github.com
+#         registry: ghcr.io
+#         repository: kausri/image-repo/calc
+#         tag_with_sha: true
+#         docker push ghcr.io/kausri/image-repo/calc:latest
