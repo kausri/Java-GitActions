@@ -26,14 +26,13 @@ jobs:
       run: docker build . --file Dockerfile --tag ghcr.io/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
     
     - name: Log into registry
-    - uses: actions/docker/login@master
+    - uses: docker/login-action@v1         
       with: 
         username: ${{ secrets.GHCR_USERNAME }}
         password: ${{ secrets.GHCR_TOKEN }}       
     - name: Push image
-      run: |
-          IMAGE_ID=ghcr.io/kausri/image-repo/calc
-          docker push ghcr.io/kausri/image-repo/calc:latest
+      run:
+        docker push ghcr.io/kausri/image-repo/calc:latest
 #     -
 #       name: Upload/ archive docker image 
 #       uses: ishworkh/docker-image-artifact-upload@v1
