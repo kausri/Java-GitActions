@@ -29,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: 'My Docker Image'
-          path: ./docker.pkg.github.com/kausri/image-repo/calc:latest
+          path: ./
 #     - uses: actions/upload-artifact@master
 #       with:
 #         name: 'image'
@@ -55,7 +55,7 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: 'My Docker Image'
-        path: ./docker.pkg.github.com/kausri/image-repo/calc:latest
+        path: ./
     -
       name: Build and push      
       id: docker_build
