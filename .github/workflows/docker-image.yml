@@ -54,10 +54,10 @@ jobs:
         password: ${{secrets.GITHUB_TOKEN}}
         registry: ghcr.io
         repository: kausri/image-repo/calc
-        image: ghcr.io/kausri/image-repo/calc
+#         image: ghcr.io/kausri/image-repo/calc
 #         username: ${{ secrets.GHCR_USERNAME }}
 #         password: ${{ secrets.GHCR_TOKEN }}         
         file: ./Dockerfile 
         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
-        tags: latest
+        tags: ghcr.io/kausri/image-repo/calc:latest
 
