@@ -21,20 +21,20 @@ jobs:
       name: Build with Maven
       run: mvn -B package --file pom.xml        
 
-    -
-      name: Build Docker image
-      run: docker build . --file Dockerfile --tag ghcr.io/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
-    -
-      name: Upload/ archive docker image 
-      uses: ishworkh/docker-image-artifact-upload@v1
-      with:
-        image: ghcr.io/kausri/image-repo/calc:latest
+#     -
+#       name: Build Docker image
+#       run: docker build . --file Dockerfile --tag ghcr.io/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
+#     -
+#       name: Upload/ archive docker image 
+#       uses: ishworkh/docker-image-artifact-upload@v1
+#       with:
+#         image: ghcr.io/kausri/image-repo/calc:latest
 
-    - 
-      name: Download built artifact
-      uses: ishworkh/docker-image-artifact-download@v1
-      with:
-        image: ghcr.io/kausri/image-repo/calc:latest
+#     - 
+#       name: Download built artifact
+#       uses: ishworkh/docker-image-artifact-download@v1
+#       with:
+#         image: ghcr.io/kausri/image-repo/calc:latest
 #     -
 #       name: Build and push      
 #       uses: mr-smithers-excellent/docker-build-push@v5
@@ -57,6 +57,7 @@ jobs:
         image: ghcr.io/kausri/image-repo/calc
 #         username: ${{ secrets.GHCR_USERNAME }}
 #         password: ${{ secrets.GHCR_TOKEN }}         
-        dockerfile: ./Dockerfile 
+        file: ./Dockerfile 
         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+        tags: ghcr.io/kausri/image-repo/calc:latest
 
