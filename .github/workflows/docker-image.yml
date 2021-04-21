@@ -54,7 +54,9 @@ jobs:
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
         registry: ghcr.io
-        repository: kausri/image-repo/calc
+#         repository: kausri/image-repo/calc
+        repository: kausri/github-actions-for-packages/calc
+
 #         image: ghcr.io/kausri/image-repo/calc
 #         username: ${{ secrets.GHCR_USERNAME }}
 #         password: ${{ secrets.GHCR_TOKEN }}         
