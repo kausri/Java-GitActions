@@ -65,8 +65,8 @@ jobs:
       with:
         image: ghcr.io/kausri/image-repo/calc
         registry: ghcr.io
-        username: ${{ secrets.github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}         
+        username: ${{ secrets.GHCR_USERNAME }}
+        password: ${{ secrets.GHCR_TOKEN }}         
         dockerfile: ./Dockerfile 
 #         tag: latest
         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
