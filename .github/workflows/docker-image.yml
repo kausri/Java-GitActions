@@ -25,11 +25,16 @@ jobs:
       name: Build Docker image
       run: docker build . --file Dockerfile --tag ghcr.io/kausri/image-repo/calc:latest --build-arg JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar     
     -
-      name: Archive docker image 
-      uses: actions/upload-artifact@v2
+      name: Upload/ archive docker image 
+      uses: ishworkh/docker-image-artifact-upload@v1
       with:
-          name: 'My Docker Image'
-          path: ./
+        name: 'My Docker Image'
+        image: "ghcr.io/kausri/image-repo/calc:latest"
+
+#       uses: actions/upload-artifact@v2
+#       with:
+#           name: 'My Docker Image'
+#           path: ./
 #     - uses: actions/upload-artifact@master
 #       with:
 #         name: 'image'
@@ -55,7 +60,6 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: 'My Docker Image'
-        path: ./
     -
       name: Build and push      
       id: docker_build
