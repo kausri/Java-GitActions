@@ -50,6 +50,7 @@ jobs:
     - name: Build container image
       uses: docker/build-push-action@v1
       with:
+        context: ./
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
         registry: ghcr.io
@@ -57,7 +58,7 @@ jobs:
 #         image: ghcr.io/kausri/image-repo/calc
 #         username: ${{ secrets.GHCR_USERNAME }}
 #         password: ${{ secrets.GHCR_TOKEN }}         
-        file: ./Dockerfile 
+        file: Dockerfile 
         buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
         tags: latest
 
