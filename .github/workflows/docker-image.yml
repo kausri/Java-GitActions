@@ -31,8 +31,10 @@ jobs:
 #         username: ${{github.actor}}
 #         password: ${{secrets.GITHUB_TOKEN}}
     - name: Push image
-      run:
+      run: |
+        docker login ghcr.io -u kausri --password ${{secrets.GITHUB_TOKEN}}
         docker push ghcr.io/kausri/image-repo/calc:latest
+        
 #     -
 #       name: Upload/ archive docker image 
 #       uses: ishworkh/docker-image-artifact-upload@v1
