@@ -28,7 +28,6 @@ jobs:
       name: Upload/ archive docker image 
       uses: ishworkh/docker-image-artifact-upload@v1
       with:
-        name: 'My Docker Image'
         image: "ghcr.io/kausri/image-repo/calc:latest"
 
 #       uses: actions/upload-artifact@v2
@@ -57,9 +56,9 @@ jobs:
 
     - 
       name: Download built artifact
-      uses: actions/download-artifact@v1
+      uses: ishworkh/docker-image-artifact-download@v1
       with:
-        name: 'My Docker Image'
+        image: "ghcr.io/kausri/image-repo/calc:latest"
     -
       name: Build and push      
       id: docker_build
