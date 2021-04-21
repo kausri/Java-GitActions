@@ -66,12 +66,11 @@ jobs:
         image: ghcr.io/kausri/image-repo/calc:latest
         registry: ghcr.io
         username: ${{ secrets.github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }} 
-        context: ./
-        file: ./Dockerfile 
-        build-args: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
+        password: ${{ secrets.GITHUB_TOKEN }}         
+        dockerfile: ./Dockerfile 
+        buildArgs: JAR_FILE=/target/Java-GitActions-0.0.1-SNAPSHOT-sources.jar
 
-
+# 'image', 'tags', 'registry', 'dockerfile', 'directory', 'buildArgs', 'username', 'password', 'gitHubOrg'
       
 #     -
 #       name: publish docker image
