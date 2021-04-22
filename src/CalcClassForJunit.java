@@ -36,6 +36,7 @@ public class CalcClassForJunit {
     }
     public int divThemUp(){
         return (number2 / number1);
+        
 
     }
 
