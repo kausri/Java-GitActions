@@ -40,5 +40,6 @@ public class CalcClassForJunitTest {
     @Test
     public void testDiv(){
         assertEquals(2, testCalc.divThemUp());
+        
     }
 }
